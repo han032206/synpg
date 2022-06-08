@@ -27,6 +27,10 @@ If you find that the code is useful in your research, please consider citing our
 
   - Download [pretrained SynPG](https://drive.google.com/file/d/1HQGxFb-MW8vnnLRVSOTv9jMRm6HZvYsI/view?usp=sharing) or [Pretrained SynPG-Large](https://drive.google.com/file/d/16jfqXUq0bojYIEv-D_-i5SunHn-Qarw5/view?usp=sharing) as well as [pretrained parse generator](https://drive.google.com/file/d/1XkWpQC1gny6ieYCHS2HIyVXAMR0SUFqi/view?usp=sharing), and put them to `./model`
   - Run `scripts/demo.sh` or the following command to generate `demo/output.txt`
+  - How to generate input.txt giving a set of input data? 
+  ```
+  java -Xmx12g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -threads 1 -annotators tokenize,ssplit,pos,parse -ssplit.eolonly -filelist files.txt -outputFormat text -parse.model edu/stanford/nlp/models/srparser/englishSR.ser.gz -outputDirectory ./output/
+  ```
   ```
   python generate.py \
       --synpg_model_path ./model/pretrained_synpg.pt \
